@@ -99,8 +99,86 @@ p {
   font-size: 5.5rem;
 }
 
+.detailsDisplay {
+  margin: 0;
+  font-size: small;
+  font-weight: bold;
+  color: hsla(0, 0%, 0%, 0.4);
+  text-decoration: underline;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.detailsDisplay:hover {
+  color: hsla(0, 0%, 0%, 0.5);
+}
+
 .errorDisplay {
   font-size: 2.5rem;
   font-weight: bold;
   color: hsla(0, 0%, 0%, 0.75);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 70%;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 10px;
+  background-color: brown;
+}
+
+.block img {
+  margin: auto;
+}
+
+.blockMain {
+  display: flex;
+  justify-content: space-between;
+  color: hsl(0, 0%, 20%);
+}
+
+.blockMain h1 {
+  font-size: 5rem;
+}
+
+.blockMain h2 {
+  margin: auto;
+  font-style: italic;
+  font-size: 2rem;
+  color: hsla(0, 0%, 20%, 0.4);
+}
+
+.blockMain p {
+  font-size: 4rem;
+}
+
+.blockSun {
+  display: grid;
+  grid-template-columns: 0.3fr 3fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 2px;
+}
+
+.blockSun p {
+  font-size: 3rem;
+}
+
+.blockTemp {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: bold;
+}
+
+.blockAtmospheric {
+  display: grid;
+  grid-template-columns: 0.3fr 3fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 2px;
 }
