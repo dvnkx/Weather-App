@@ -1,8 +1,16 @@
 # Weather App
 
-> That project can show you current weather in any city in the world.
+> That project can show you __current weather__ in any city in the world. <br/>
 > You can check it by typing city name in input.
 
-<img width="745" alt="EXAMPLE1" src="https://github.com/dvnkx/Weather-App/assets/104072047/5abf85b2-0d2b-4862-82ed-6a831bdff6dc">
-<img width="745" alt="EXAMPLE2" src="https://github.com/dvnkx/Weather-App/assets/104072047/ea162edb-131e-4973-b69e-8d1a748b4382">
-<img width="745" alt="EXAMPLE3" src="https://github.com/dvnkx/Weather-App/assets/104072047/f0247c70-2b17-4d0c-843e-b13d14055da7">
+### Default display 
+<br/>
+<img width="511" alt="Kyiv" src="https://github.com/dvnkx/Weather-App/assets/104072047/6cc9da73-5ce5-4b34-8dce-25f6b5743a8f">
+<img width="511" alt="New York" src="https://github.com/dvnkx/Weather-App/assets/104072047/3a7c658d-b5dd-4505-9618-a608921fe11f">
+<img width="511" alt="Udine" src="https://github.com/dvnkx/Weather-App/assets/104072047/5a564e3d-efe5-43da-8a44-eddf5b11156d">
+
+### More info display<br/>
+<br/>
+<img width="1278" alt="Kyiv More" src="https://github.com/dvnkx/Weather-App/assets/104072047/b1cb06a4-58fc-41ae-aca4-c41b53b50bd6">
+<img width="1278" alt="New York More" src="https://github.com/dvnkx/Weather-App/assets/104072047/ebc21aef-5ca1-43e6-9c09-e3df3068a1f9">
+<img width="1278" alt="Udine More" src="https://github.com/dvnkx/Weather-App/assets/104072047/b6e0a25a-489d-4d0f-b39c-336033d3699e">
