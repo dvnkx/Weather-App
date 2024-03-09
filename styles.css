@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -10,6 +14,8 @@ body {
 .mainH1 {
   font-size: 3rem;
 }
+
+/* Form */
 
 form {
   margin-bottom: 40px;
@@ -58,16 +64,24 @@ form {
   outline: 2px solid hsl(151, 96%, 20%);
 }
 
+/* Card */
+
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  inset: 0;
+  animation: fade-out 250ms forwards;
   padding: 50px;
   min-width: 340px;
   background: linear-gradient(135deg, hsl(210, 20%, 96%), hsl(0, 0%, 83%));
   box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.5);
   border: none;
   border-radius: 5px;
+}
+
+.card[open] {
+  animation: fade-in 500ms forwards;
 }
 
 p {
@@ -123,20 +137,27 @@ p {
   color: hsla(0, 0%, 0%, 0.75);
 }
 
+/* More info block */
+
 .block {
   display: flex;
   flex-direction: column;
+  inset: 0;
+  animation: fade-out 250ms forwards;
   border-radius: 10px;
   width: 70%;
   padding: 10px;
   padding-left: 50px;
   padding-right: 50px;
   margin-bottom: 10px;
-  background-color: brown;
 }
 
 .block img {
   margin: auto;
+}
+
+.block[open] {
+  animation: fade-in 1000ms forwards;
 }
 
 .blockMain {
@@ -185,4 +206,24 @@ p {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 1px;
   grid-row-gap: 2px;
+}
+
+/* Animations */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
 }

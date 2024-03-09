@@ -55,6 +55,7 @@ function displayWeatherInfo(data) {
   } = currentWeatherData;
 
   card.textContent = "";
+  card.setAttribute("open", "");
   card.style.display = "flex";
 
   const cityDisplay = document.createElement("h1");
@@ -68,7 +69,7 @@ function displayWeatherInfo(data) {
   tempDisplay.textContent = `Temp: ${(temp - 273.15).toFixed(1)}°C`;
   humidityDisplay.textContent = `Humidity: ${humidity}%`;
   descDisplay.textContent = description;
-  weatherEmoji.textContent = getWeatherEmoji(id);
+  weatherEmoji.textContent = getWeatherPattern(id);
   detailsDisplay.textContent = "More details";
 
   cityDisplay.classList.add("cityDisplay");
@@ -78,20 +79,24 @@ function displayWeatherInfo(data) {
   weatherEmoji.classList.add("weatherEmoji");
   detailsDisplay.classList.add("detailsDisplay");
 
-  detailsDisplay.addEventListener("click", () => showDetailsInfo());
-
   card.appendChild(cityDisplay);
   card.appendChild(tempDisplay);
   card.appendChild(humidityDisplay);
   card.appendChild(descDisplay);
   card.appendChild(weatherEmoji);
   card.appendChild(detailsDisplay);
+
+  detailsDisplay.addEventListener("click", () => {
+    displayDetailsInfo();
+    block.scrollIntoView();
+  });
 }
 
 function displayDetailsInfo() {
   const {
     name: city,
     timezone,
+    emoji,
     dt: unix,
     main: { temp, feels_like, humidity, pressure },
     sys: { sunrise, sunset },
@@ -106,6 +111,7 @@ function displayDetailsInfo() {
   blockTemp.textContent = "";
   blockAtmospheric.textContent = "";
 
+  block.setAttribute("open", "");
   block.style.display = "flex";
 
   const cityDisplay = document.createElement("h1");
@@ -124,17 +130,17 @@ function displayDetailsInfo() {
   const windSvg = document.createElement("img");
   const windDisplay = document.createElement("p");
 
-  cityDisplay.textContent = city;
+  cityDisplay.textContent = city + " " + emoji;
   descDisplay.textContent = description;
   timeDisplay.textContent = getTime(unix, timezone);
   sunriseSvg.src = "./assets/sunrise-svgrepo-com.svg";
   sunriseDisplay.textContent = getTime(sunrise, timezone);
   sunsetSvg.src = "./assets/sunset-svgrepo-com.svg";
   sunsetDisplay.textContent = getTime(sunset, timezone);
-  tempDisplay.textContent = `Temp: ${(temp - 273.15).toFixed(1)}°C`;
-  feelsLikeDisplay.textContent = `Feels like: ${(feels_like - 273.15).toFixed(
-    1
-  )}°C`;
+  tempDisplay.textContent = `🌡️ Temp: ${(temp - 273.15).toFixed(1)}°C`;
+  feelsLikeDisplay.textContent = `🌡️ Feels like: ${(
+    feels_like - 273.15
+  ).toFixed(1)}°C`;
   humiditySvg.src = "./assets/humidity-svgrepo-com.svg";
   humidityDisplay.textContent = `Humidity: ${humidity}%`;
   pressureSvg.src = "./assets/pressure-svgrepo-com.svg";
@@ -174,37 +180,45 @@ function displayError(message) {
   card.appendChild(errorDisplay);
 }
 
-function getWeatherEmoji(weatherId) {
+function getWeatherPattern(weatherId) {
   switch (true) {
     case weatherId >= 200 && weatherId < 300:
       card.style.background = block.style.background =
         "linear-gradient(180deg, hsl(220, 100%, 50%), hsl(240, 100%, 50%))";
+      currentWeatherData.emoji = "⛈️";
       return "⛈️";
     case weatherId >= 300 && weatherId < 400:
       card.style.background = block.style.background =
         "linear-gradient(180deg, hsl(200, 80%, 80%), hsl(210, 100%, 50%))";
+      currentWeatherData.emoji = "🌧️";
       return "🌧️";
     case weatherId >= 500 && weatherId < 600:
       card.style.background = block.style.background =
         "linear-gradient(180deg, hsl(200, 70%, 60%), hsl(210, 100%, 50%))";
+      currentWeatherData.emoji = "🌧️";
       return "🌧️";
     case weatherId >= 600 && weatherId < 700:
       card.style.background = block.style.background =
         "linear-gradient(180deg, hsl(200, 20%, 90%), hsl(60, 50%, 95%))";
+      currentWeatherData.emoji = "🌨️";
       return "🌨️";
     case weatherId >= 700 && weatherId < 800:
       card.style.background = block.style.background =
         "linear-gradient(180deg, hsl(200, 60%, 80%), hsl(60, 100%, 90%))";
+      currentWeatherData.emoji = "🌫️";
       return "🌫️";
     case weatherId === 800:
       card.style.background = block.style.background =
         "linear-gradient(180deg,hsl(200, 100%, 70%), hsl(60, 100%, 70%))";
+      currentWeatherData.emoji = "☀️";
       return "☀️";
     case weatherId >= 801 && weatherId < 810:
       card.style.background = block.style.background =
         "linear-gradient(180deg, hsl(200, 20%, 90%), hsl(210, 30%, 80%))";
+      currentWeatherData.emoji = "☁️";
       return "☁️";
     default:
+      currentWeatherData.emoji = "❓";
       return "❓";
   }
 }
