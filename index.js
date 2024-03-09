@@ -88,7 +88,7 @@ function displayWeatherInfo(data) {
   card.appendChild(detailsDisplay);
 }
 
-function showDetailsInfo() {
+function displayDetailsInfo() {
   const {
     name: city,
     timezone,
